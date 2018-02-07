@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      My Fridge
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+  
+  
+  <ion-content padding>
+      <button ion-button (click)="scan()">Scan ... </button>
+      <div *ngIf="scanData">
+          
+          <p>Scanned Format : </p>
+
+  
+      </div>
+      <button ion-button (click)="lanceRequette()">lance la requette</button>
+      <button ion-button (click)="rechercheRecette()">recherche les recettes</button>
+      <p>l'aliment scanné : {{produit}}</p>
+      
+  </ion-content>
+  
