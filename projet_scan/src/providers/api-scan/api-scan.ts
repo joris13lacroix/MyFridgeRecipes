@@ -38,6 +38,7 @@ export class DataProvider {
     this.produit = this.http.get(this.debutChaineProduit + codeBarre + this.finChaineProduit);
     return this.produit;
   }
+  
   getRecipes(product): Observable<any>{
     
     //for (this.i in product){

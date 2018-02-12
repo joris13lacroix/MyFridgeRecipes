@@ -15,6 +15,7 @@ import { DataProvider } from '../providers/api-scan/api-scan';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -28,7 +29,7 @@ import { IonicStorageModule } from '@ionic/storage';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

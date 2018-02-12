@@ -7,6 +7,16 @@
   </ion-header>
   
   <ion-content padding>
-      <p>App photo</p>
-  </ion-content>
+    
+    <button ion-button (click)="scan()">Scan ... </button>
+    <div *ngIf="scanData">
+        <p>Scanned Format : </p>
+    </div>
+
+    <button ion-button (click)="lanceRequette()">lance la requette</button>
+    <button ion-button (click)="rechercheRecette()">recherche les recettes</button>
+    <p>l'aliment scanné : {{produit}}</p>
+    <p>l'aliment trouvé : {{wordEn}}</p>
+    
+</ion-content>
   
