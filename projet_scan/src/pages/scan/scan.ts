@@ -268,7 +268,7 @@ findKeyWords(scan){
     ['sauce tomate','tomato sauce'],
     ['coulis de tomate', 'tomato coulis'],
     ['mayonnaise','mayonnaise'],
-    ['ketchuo','ketchup'],
+    ['ketchup','ketchup'],
     ['moutarde','mustard'],
     ['œufs','eggs'],
     ['oeufs','eggs'],
