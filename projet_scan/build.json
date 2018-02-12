@@ -1,0 +1,11 @@
+{
+    "android":{
+        "release":{
+            "keystore":"isen.jks",
+            "storePassword":"isentoulon",
+            "alias":"isentoulon",
+            "password":"isentoulon",
+            "keystoreType":""
+        }
+    }
+}

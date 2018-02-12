@@ -72,8 +72,7 @@ export class ScanPage {
   }
 
   rechercheRecette(){
-    console.log(this.produit);
-    this.apiProvider.getRecipes('chicken').subscribe(data => {
+    this.apiProvider.getRecipes(this.wordEn).subscribe(data => {
       console.log(data);
       if (data.count>0){
         //this.recette = data.product.product_name;
@@ -119,7 +118,7 @@ findKeyWords(scan){
     ['concombre','cucumber'],
     ['courge','squash'],
     ['cresson de fontaine','watercress'],
-    ['daikon','daikon'],
+    ['radis blanc','daikon'],
     ['feuillage de moutarde','mustard foliage'],
     ['feuille de luzerne verte','green alfalfa leaf'],
     ['feuille de chou rosette','rosette leaf'],
@@ -196,7 +195,7 @@ findKeyWords(scan){
     ['canneberges','cranberries'],
     ['citron','lemon'],
     ['kiwi','kiwi'],
-    ['lime','lime'],
+    ['citron vert','lime'],
     ['orange','orange'],
     ['huile avocat','avocado oil'],
     ['huile de canola','canola oil'],

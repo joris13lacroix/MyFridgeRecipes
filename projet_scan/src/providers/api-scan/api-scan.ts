@@ -1,10 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/Observable/of';
-import { tap } from 'rxjs/Operators';
-import { Storage } from '@ionic/storage';
-import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/map';
@@ -27,7 +23,7 @@ export class DataProvider {
   produit: Observable<any>;
   recette: Observable<any>;
   //i:any;
-  constructor(public http: HttpClient, private storage: Storage, public httpClient: HttpClient) {
+  constructor(public http: HttpClient, public httpClient: HttpClient) {
     this.debutChaineProduit='https://world.openfoodfacts.org/api/v0/product/';
     this.finChaineProduit='.json';
     this.debutChaineRecette='https://api.edamam.com/search?q=';
