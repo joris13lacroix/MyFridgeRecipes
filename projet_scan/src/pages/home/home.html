@@ -7,6 +7,7 @@
 </ion-header>
   
 <ion-content padding>
+<<<<<<< Updated upstream
     <ion-list>
 
         <form (ngSubmit)="goRecipe()">
@@ -31,5 +32,29 @@
         
       
       </ion-list>
+=======
+  <ion-list>
+    
+      <ion-item>
+        <ion-label>Pepperoni</ion-label>
+        <ion-checkbox [(ngModel)]="pepperoni"></ion-checkbox>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Sausage</ion-label>
+        <ion-checkbox [(ngModel)]="sausage" ></ion-checkbox>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Mushrooms</ion-label>
+        <ion-checkbox [(ngModel)]="mushrooms"></ion-checkbox>
+      </ion-item>
+    
+    </ion-list>
+    <ion-item>
+      <ion-label>Cucumber</ion-label>
+      <ion-checkbox [(ngModel)]="mystat" (ionChange)="updateCucumber('concombre')"></ion-checkbox>
+    </ion-item>
+>>>>>>> Stashed changes
 </ion-content>
   
