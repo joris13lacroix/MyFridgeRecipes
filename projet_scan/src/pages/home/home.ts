@@ -1,36 +1,29 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
+import { DataProvider } from '../../providers/api-scan/api-scan';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-<<<<<<< Updated upstream
-  recipe = {}
-=======
+  recipe = {};
+  maRecherche:String;
 
-  cucumber: String;
-  stat:boolean;
->>>>>>> Stashed changes
-
-  constructor(public navCtrl: NavController) {
-    this.cucumber="concombre";
+  constructor(public navCtrl: NavController, public apiProvider : DataProvider) {
   }
 
  
   
-<<<<<<< Updated upstream
   goRecipe() {
-    console.log(this.recipe)
-  }
-  
-=======
-    updateCucumber(monobjet,mystat) {
-      if (mystat==true){
-      console.log(monobjet);
+    this.maRecherche="";
+    for(let i in this.recipe){
+      if (this.recipe[i]==true){
+      this.maRecherche+=i+',';
+      this.apiProvider.recipes = this.maRecherche;
       }
     }
->>>>>>> Stashed changes
+    console.log(this.maRecherche);
+  }
+  
 }

@@ -71,15 +71,6 @@ export class ScanPage {
       })
   }
 
-  rechercheRecette(){
-    this.apiProvider.getRecipes(this.wordEn).subscribe(data => {
-      console.log(data);
-      if (data.count>0){
-        //this.recette = data.product.product_name;
-      }
-      
-    })
-  }
 
   removeAccents(str) {
     let accents = 'ÀÁÂÃÄÅàáâãäåßÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
