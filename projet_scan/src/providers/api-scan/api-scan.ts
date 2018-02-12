@@ -22,12 +22,12 @@ export class DataProvider {
   finChaineRecette : String;
   produit: Observable<any>;
   recette: Observable<any>;
-  //i:any;
+  recipes:any;
   constructor(public http: HttpClient, public httpClient: HttpClient) {
     this.debutChaineProduit='https://world.openfoodfacts.org/api/v0/product/';
     this.finChaineProduit='.json';
     this.debutChaineRecette='https://api.edamam.com/search?q=';
-    this.finChaineRecette='&app_id=0d6a8756&app_key=ce315d29c1aaa6a7d26dc963e067aa08&from=2&to=9';
+    this.finChaineRecette='&app_id=0d6a8756&app_key=ce315d29c1aaa6a7d26dc963e067aa08&from=0&to=5';
   }
 
   getProduct(codeBarre): Observable<any>{
@@ -35,13 +35,8 @@ export class DataProvider {
     return this.produit;
   }
   
-  getRecipes(product): Observable<any>{
-    
-    //for (this.i in product){
-    //  this.milieuChaineRecette+=','+this.i;
-    //}
-    //console.log(this.milieuChaineRecette);
-    this.recette = this.http.get(this.debutChaineRecette + product + this.finChaineRecette);
+  getRecipes(): Observable<any>{
+    this.recette = this.http.get(this.debutChaineRecette + this.recipes + this.finChaineRecette);
     return this.recette;
   }
  
