@@ -7,11 +7,15 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  recipe = {}
 
   constructor(public navCtrl: NavController) {
     
   }
 
+  
+  goRecipe() {
+    console.log(this.recipe)
+  }
   
 }
