@@ -195,11 +195,7 @@ findKeyWords(scan){
     ['canneberges','cranberries'],
     ['citron','lemon'],
     ['kiwi','kiwi'],
-<<<<<<< Updated upstream
     ['citron vert','lime'],
-=======
-    ['citron verre','lime'],
->>>>>>> Stashed changes
     ['orange','orange'],
     ['huile avocat','avocado oil'],
     ['huile de canola','canola oil'],
