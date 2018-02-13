@@ -52,7 +52,6 @@ export class DataProvider {
             return this.http.get("assets/data.json").pipe(
               tap ( res => {
                 this.feedData = res.feed;
-                console.log(res);
               })
             );
           } else {
@@ -72,10 +71,8 @@ export class DataProvider {
   }
 
   deleteFeedList(): Observable<any>{
-    console.log("ca se lance");
     this.storage.set("ingredients",{feed:null});
       return Observable.fromPromise(this.storage.get("ingredients")).mergeMap((val:any) => {
-            console.log('on est dans le if');
             return this.http.get("assets/data.json").pipe(
               tap ( res => {
                 this.feedData = res.feed;

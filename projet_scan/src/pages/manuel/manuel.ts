@@ -20,7 +20,6 @@ export class ManuelPage {
 
   AddArticle(){
     this.apiProvider.getFeedList().subscribe(data => {
-      console.log(data.feed);
       this.feedList = data.feed;
     });
       for(let i in this.recipe){
