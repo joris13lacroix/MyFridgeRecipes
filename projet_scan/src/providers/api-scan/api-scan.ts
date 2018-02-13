@@ -4,6 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/map';
+import { of } from 'rxjs/Observable/of';
+import { tap } from 'rxjs/Operators';
+import { Storage } from '@ionic/storage';
 
 
 /*
@@ -23,11 +26,13 @@ export class DataProvider {
   produit: Observable<any>;
   recette: Observable<any>;
   recipes:any;
-  constructor(public http: HttpClient, public httpClient: HttpClient) {
+  feedData:any;
+  constructor(public http: HttpClient, public httpClient: HttpClient, private storage: Storage) {
     this.debutChaineProduit='https://world.openfoodfacts.org/api/v0/product/';
     this.finChaineProduit='.json';
     this.debutChaineRecette='https://api.edamam.com/search?q=';
     this.finChaineRecette='&app_id=0d6a8756&app_key=ce315d29c1aaa6a7d26dc963e067aa08&from=0&to=5';
+    this.feedData=[];
   }
 
   getProduct(codeBarre): Observable<any>{
@@ -40,4 +45,42 @@ export class DataProvider {
     return this.recette;
   }
  
+  getFeedList(): Observable<any>{
+    if (this.feedData.length == 0){
+      return Observable.fromPromise(this.storage.get("ingredients")).mergeMap((val:any) => {
+          if (val == null || val.feed == null) {
+            return this.http.get("assets/data.json").pipe(
+              tap ( res => {
+                this.feedData = res.feed;
+                console.log(res);
+              })
+            );
+          } else {
+            this.feedData = val.feed;
+            return of({feed:this.feedData});
+          }
+      });
+    } else {
+      
+      return of({feed:this.feedData});
+    }
+  }
+
+  addFeedToList(newFeed){
+    this.feedData.push(newFeed);
+    this.storage.set("ingredients",{feed:this.feedData});
+  }
+
+  deleteFeedList(): Observable<any>{
+    console.log("ca se lance");
+    this.storage.set("ingredients",{feed:null});
+      return Observable.fromPromise(this.storage.get("ingredients")).mergeMap((val:any) => {
+            console.log('on est dans le if');
+            return this.http.get("assets/data.json").pipe(
+              tap ( res => {
+                this.feedData = res.feed;
+              })
+            );
+      });
+  }
 }
