@@ -41,6 +41,7 @@ export class DataProvider {
   }
   
   getRecipes(): Observable<any>{
+    console.log(this.recipes);
     this.recette = this.http.get(this.debutChaineRecette + this.recipes + this.finChaineRecette);
     return this.recette;
   }
@@ -89,20 +90,11 @@ export class DataProvider {
       });
   }
   lancer(checkboxFields,feedData):Observable<any>{
-    /*
-    for(let i in this.checkboxFields){
-      if (this.checkboxFields[i]==true){
-      console.log(this.feedList[i].name);
-      }
-    }*/
-    //console.log("le feed data:",feedData);
     let feedList2=[];
     let feedList3=[];
     let j=0;
     let name="";
-    //console.log(checkboxFields);
     for(let i in checkboxFields){
-      //console.log(checkboxFields[i]);
       if (checkboxFields[i]==true){
         
         name= feedData[i].name;
@@ -127,7 +119,6 @@ export class DataProvider {
       }
     }
     this.feedData=feedList3;
-    //console.log(this.feedData);
     this.storage.set("ingredients",{feed:this.feedData});
     return of({feed:this.feedData});
   }

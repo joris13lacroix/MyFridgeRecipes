@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { DataProvider } from '../../providers/api-scan/api-scan';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 @Component({
   selector: 'page-home',
@@ -12,9 +13,8 @@ export class HomePage {
   feedList: any;
   checkboxFields={};// ATTENTION continuer de remplir le tableau si on veux rajoutter des produits dans le html
 
-  constructor(public navCtrl: NavController, public apiProvider : DataProvider) {
+  constructor(public navCtrl: NavController, public apiProvider : DataProvider, private alertCtrl: AlertController) {
     apiProvider.getFeedList().subscribe(data => {
-      //console.log(data.feed);
       this.feedList = data.feed;
     });
   }
@@ -23,29 +23,30 @@ export class HomePage {
   
   goRecipe() {
     this.maRecherche="";
-    for(let i in this.recipe){
-      if (this.recipe[i]==true){
-      this.maRecherche+=i+',';
-      this.apiProvider.recipes = this.maRecherche;
+    for(let i in this.feedList){
+      if (this.checkboxFields[i]==true){
+      this.maRecherche+=this.feedList[i].name+',';
       }
     }
-    console.log(this.maRecherche);
-  }
-  lancer(){
-
+    this.apiProvider.recipes = this.maRecherche;
+    this.apiProvider.getRecipes().subscribe(data => {
+      console.log(data);
+      if(data.count>0){
+        this.recipe=data;
+        console.log("recipes find");
+      }
+    });
+    this.navCtrl.parent.select(3);
+      
+    //console.log(this.recipe);
   }
 
   inverse(){
-    console.log(this.checkboxFields);
     if(this.checkboxFields[0]==null){
-      console.log(this.feedList);
       for (let i in this.feedList){
-        console.log(i);
         this.checkboxFields[i]=false;
-        console.log(this.checkboxFields[i]);
       }
     }
-    console.log(this.checkboxFields);
     for (let i in this.checkboxFields){
       if(this.checkboxFields[i]==true){
         this.checkboxFields[i]=false;
@@ -62,6 +63,7 @@ export class HomePage {
       }
     }
     if(valeurCoche==true){
+      //mettre l'alerte pour confirmer la suppression ici
       this.apiProvider.lancer(this.checkboxFields,this.feedList).subscribe(data => {
         this.feedList = data.feed;
       });
@@ -71,13 +73,5 @@ export class HomePage {
         }
       }
     }
-  }
-
-  deleteOld(){
-    this.apiProvider.deleteFeedList().subscribe(data => {
-      this.feedList = data.feed;
-    });
-    
-
   }
 }
