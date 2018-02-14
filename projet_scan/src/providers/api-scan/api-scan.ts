@@ -46,7 +46,11 @@ export class DataProvider {
   }
  
   getFeedList(): Observable<any>{
-    if (this.feedData.length == 0){
+    let j=0;
+    for (let i in this.feedData){
+      j+=1;
+    }
+    if (j == 0){
       return Observable.fromPromise(this.storage.get("ingredients")).mergeMap((val:any) => {
           if (val == null || val.feed == null) {
             return this.http.get("assets/data.json").pipe(
@@ -68,6 +72,10 @@ export class DataProvider {
   addFeedToList(newFeed){
     this.feedData.push(newFeed);
     this.storage.set("ingredients",{feed:this.feedData});
+    this.afficheFeedData();
+  }
+  afficheFeedData(){
+    console.log("feedData:",this.feedData);
   }
 
   deleteFeedList(): Observable<any>{
@@ -79,5 +87,48 @@ export class DataProvider {
               })
             );
       });
+  }
+  lancer(checkboxFields,feedData):Observable<any>{
+    /*
+    for(let i in this.checkboxFields){
+      if (this.checkboxFields[i]==true){
+      console.log(this.feedList[i].name);
+      }
+    }*/
+    //console.log("le feed data:",feedData);
+    let feedList2=[];
+    let feedList3=[];
+    let j=0;
+    let name="";
+    //console.log(checkboxFields);
+    for(let i in checkboxFields){
+      //console.log(checkboxFields[i]);
+      if (checkboxFields[i]==true){
+        
+        name= feedData[i].name;
+        feedList2[j]={
+          id:j,
+          name : name}
+        j+=1;
+      }
+    }
+    j=0;
+    for(let i in feedData){
+      let aSupprimer=false;
+      for(let j in feedList2){
+        if (feedData[i].name == feedList2[j].name){
+          aSupprimer=true;
+        }
+      }
+      if(aSupprimer==false){
+        feedList3[j]=feedData[i];
+        feedList3[j].id=j;
+        j+=1;
+      }
+    }
+    this.feedData=feedList3;
+    //console.log(this.feedData);
+    this.storage.set("ingredients",{feed:this.feedData});
+    return of({feed:this.feedData});
   }
 }

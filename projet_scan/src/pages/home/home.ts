@@ -10,11 +10,11 @@ export class HomePage {
   recipe = {};
   maRecherche:String;
   feedList: any;
-  checkboxFields={};
+  checkboxFields={};// ATTENTION continuer de remplir le tableau si on veux rajoutter des produits dans le html
 
   constructor(public navCtrl: NavController, public apiProvider : DataProvider) {
     apiProvider.getFeedList().subscribe(data => {
-      console.log(data.feed);
+      //console.log(data.feed);
       this.feedList = data.feed;
     });
   }
@@ -31,16 +31,49 @@ export class HomePage {
     }
     console.log(this.maRecherche);
   }
-  
   lancer(){
+
+  }
+
+  inverse(){
+    console.log(this.checkboxFields);
+    if(this.checkboxFields[0]==null){
+      console.log(this.feedList);
+      for (let i in this.feedList){
+        console.log(i);
+        this.checkboxFields[i]=false;
+        console.log(this.checkboxFields[i]);
+      }
+    }
+    console.log(this.checkboxFields);
+    for (let i in this.checkboxFields){
+      if(this.checkboxFields[i]==true){
+        this.checkboxFields[i]=false;
+      }else{
+        this.checkboxFields[i]=true;
+      }
+    }
+  }
+  delete(){
+    let valeurCoche=false;
     for(let i in this.checkboxFields){
       if (this.checkboxFields[i]==true){
-      console.log(this.feedList[i].name);
+        valeurCoche=true;
+      }
+    }
+    if(valeurCoche==true){
+      this.apiProvider.lancer(this.checkboxFields,this.feedList).subscribe(data => {
+        this.feedList = data.feed;
+      });
+      for (let i in this.checkboxFields){
+        if(this.checkboxFields[i]==true){
+          this.checkboxFields[i]=false;
+        }
       }
     }
   }
 
-  delete(){
+  deleteOld(){
     this.apiProvider.deleteFeedList().subscribe(data => {
       this.feedList = data.feed;
     });

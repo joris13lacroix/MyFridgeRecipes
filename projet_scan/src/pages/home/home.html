@@ -7,15 +7,14 @@
 </ion-header>
   
 <ion-content padding>
-    <ion-list>
-
+    <ion-list >
+        <button ion-button (click)="inverse()" block>inverse checkbox</button>
       <ion-item *ngFor="let feed of feedList; let i=index;">
-        <ion-checkbox [(ngModel)]="checkboxFields[i]"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="checkboxFields[i]" ></ion-checkbox>
         <ion-label>{{feed.name}}</ion-label>
       </ion-item>
       <button ion-button (click)="lancer()" block>find recipe</button>
-      <button ion-button (click)="delete()" block>delete all</button>
-      
+      <button ion-button (click)="delete()" block>delete</button>
         
       
       </ion-list>

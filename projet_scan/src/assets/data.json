@@ -1,13 +1,5 @@
 {
     "feed": [
-      {
-        "id": 0,
-        "name":"poirot"
-      },
-      {
-        "id": 1,
-        "name":"chicken"
-      }
     ]
   }
   
