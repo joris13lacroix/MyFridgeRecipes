@@ -28,7 +28,6 @@ export class ScanPage {
     }
     this.barcodeScanner.scan(this.options).then((barcodeData) => {
 
-        console.log(barcodeData);
         this.codeBarre=barcodeData.text;
         let alert = this.alertCtrl.create({
           title: 'product found :)',
@@ -50,7 +49,6 @@ export class ScanPage {
 
   lanceRequette(){
     this.apiProvider.getProduct(this.codeBarre).subscribe(data => {
-      //console.log(data);
       if (data.status==1){
         if(data.product.generic_name=="" || data.product.generic_name==null){
           this.produit = this.removeAccents(data.product.product_name);
@@ -60,7 +58,6 @@ export class ScanPage {
           this.produit = this.removeAccents(data.product.generic_name);
           this.findKeyWords(this.produit);
         }
-      //console.log(this.produit);
       }else{
         let alert = this.alertCtrl.create({
           title: 'product not found :(',
@@ -262,7 +259,8 @@ findKeyWords(scan){
     ['moutarde','mustard'],
     ['œufs','eggs'],
     ['oeufs','eggs'],
-    ['bœuf','beef']
+    ['bœuf','beef'],
+    ['coca','coca']
 
   ]
 

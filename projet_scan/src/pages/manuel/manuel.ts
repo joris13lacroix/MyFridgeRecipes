@@ -9,7 +9,6 @@ import { AlertController } from 'ionic-angular';
 })
 export class ManuelPage {
 
-  feedList: any;
   recipe = {};
 
   constructor(public navCtrl: NavController,  public apiProvider : DataProvider, private alertCtrl: AlertController) {
@@ -19,51 +18,61 @@ export class ManuelPage {
   
 
   AddArticle(){
-    this.apiProvider.getFeedList().subscribe(data => {
-      this.feedList = data.feed;
-    });
-      for(let i in this.recipe){
-        if (this.recipe[i]==true){
-          let objAdd=true;
-          this.recipe[i]=false;
-          let feedLength=0;
-          for(let j in this.feedList){
-            feedLength+=1;
-            if(this.feedList[j].name==i){
-              objAdd=false;
-            }
+    let ingredientsSucces="";
+    let ingredientsEchec=""; 
+    for(let i in this.recipe){
+      if (this.recipe[i]==true){
+        let objAdd=true;
+        this.recipe[i]=false;
+        let feedLength=0;
+        for(let j in this.apiProvider.feedData){
+          feedLength+=1;
+          if(this.apiProvider.feedData[j].name==i){
+            objAdd=false;
           }
-          if(objAdd==false){
-            this.alerteEchec(i);
+        }
+        if(objAdd==false){
+          if(ingredientsEchec==""){
+            ingredientsEchec+=i;
           }else{
-            let newFeed={
-              id: feedLength,
-              name: i,
-            }
-            this.apiProvider.addFeedToList(newFeed);
+            ingredientsEchec+=', '+i;
+          }
+          
+        }else{
+          let newFeed={
+            id: feedLength,
+            name: i,
+          }
+          this.apiProvider.addFeedToList(newFeed);
+          if(ingredientsSucces==""){
+            ingredientsSucces+=i;
+          }else{
+            ingredientsSucces+=', '+i;
           }
         }
       }
-      /*
-      
-      this.alerteSucces();
-
-      this.alerteEchec();*/
+    }
+    this.alerteEchec(ingredientsEchec);
+    this.alerteSucces(ingredientsSucces);
   }
 
-  alerteSucces() {
-    let alert = this.alertCtrl.create({
-      title: 'ingrédient ajoutée avec succès',
-      buttons: ['ok']
-    });
-    alert.present();
+  alerteSucces(ingredients) {
+    if (ingredients!=""){
+      let alert = this.alertCtrl.create({
+        title: ingredients+' ajouté avec succès', //en anglais pas de faut d'accord du verbe ;)
+        buttons: ['ok']
+      });
+      alert.present();
+    }
   }
 
-  alerteEchec(i) {
-    let alert = this.alertCtrl.create({
-      title: "L'ingrédient "+i+" est deja existant dans votre frigo",
-      buttons: ['ok']
-    });
-    alert.present();
+  alerteEchec(ingredients) {
+    if (ingredients!=""){
+      let alert = this.alertCtrl.create({
+        title: ingredients+" est deja existant dans votre frigo",
+        buttons: ['ok']
+      });
+      alert.present();
+    }
   }
 }

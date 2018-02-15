@@ -41,7 +41,6 @@ export class DataProvider {
   }
   
   getRecipes(): Observable<any>{
-    console.log(this.recipes);
     this.recette = this.http.get(this.debutChaineRecette + this.recipes + this.finChaineRecette);
     return this.recette;
   }
@@ -73,29 +72,15 @@ export class DataProvider {
   addFeedToList(newFeed){
     this.feedData.push(newFeed);
     this.storage.set("ingredients",{feed:this.feedData});
-    this.afficheFeedData();
-  }
-  afficheFeedData(){
-    console.log("feedData:",this.feedData);
   }
 
-  deleteFeedList(): Observable<any>{
-    this.storage.set("ingredients",{feed:null});
-      return Observable.fromPromise(this.storage.get("ingredients")).mergeMap((val:any) => {
-            return this.http.get("assets/data.json").pipe(
-              tap ( res => {
-                this.feedData = res.feed;
-              })
-            );
-      });
-  }
-  lancer(checkboxFields,feedData):Observable<any>{
+  delete(checkboxFields,feedData):Observable<any>{
     let feedList2=[];
     let feedList3=[];
     let j=0;
     let name="";
     for(let i in checkboxFields){
-      if (checkboxFields[i]==true){
+      if (checkboxFields[i]==true ){
         
         name= feedData[i].name;
         feedList2[j]={

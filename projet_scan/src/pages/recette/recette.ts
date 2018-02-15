@@ -10,18 +10,12 @@ export class RecettePage {
 
   recipes:any
   constructor(public navCtrl: NavController, public apiProvider : DataProvider) {
-    console.log("a la création la recette:",this.recipes);
-    if(this.recipes==null){
-      console.log("c la bonne condition");
-    }
   }
 
   goRecipe(){
     this.apiProvider.recette.subscribe(data => {
       if(data.count>0){
         this.recipes=data;
-        console.log(this.recipes);
-        console.log(data.hits[0].recipe.label);
       }
     });
   }

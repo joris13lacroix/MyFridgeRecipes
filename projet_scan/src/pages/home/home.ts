@@ -22,40 +22,6 @@ export class HomePage {
  
   
   goRecipe() {
-    this.maRecherche="";
-    for(let i in this.feedList){
-      if (this.checkboxFields[i]==true){
-      this.maRecherche+=this.feedList[i].name+',';
-      }
-    }
-    this.apiProvider.recipes = this.maRecherche;
-    this.apiProvider.getRecipes().subscribe(data => {
-      console.log(data);
-      if(data.count>0){
-        this.recipe=data;
-        console.log("recipes find");
-      }
-    });
-    this.navCtrl.parent.select(3);
-      
-    //console.log(this.recipe);
-  }
-
-  inverse(){
-    if(this.checkboxFields[0]==null){
-      for (let i in this.feedList){
-        this.checkboxFields[i]=false;
-      }
-    }
-    for (let i in this.checkboxFields){
-      if(this.checkboxFields[i]==true){
-        this.checkboxFields[i]=false;
-      }else{
-        this.checkboxFields[i]=true;
-      }
-    }
-  }
-  delete(){
     let valeurCoche=false;
     for(let i in this.checkboxFields){
       if (this.checkboxFields[i]==true){
@@ -63,15 +29,76 @@ export class HomePage {
       }
     }
     if(valeurCoche==true){
-      //mettre l'alerte pour confirmer la suppression ici
-      this.apiProvider.lancer(this.checkboxFields,this.feedList).subscribe(data => {
-        this.feedList = data.feed;
+      this.maRecherche="";
+      for(let i in this.feedList){
+        if (this.checkboxFields[i]==true){
+        this.maRecherche+=this.feedList[i].name+',';
+        }
+      }
+      this.apiProvider.recipes = this.maRecherche;
+      this.apiProvider.getRecipes().subscribe(data => {
+        if(data.count>0){
+          this.recipe=data;
+        }
       });
+      this.navCtrl.parent.select(3);
+    }else{
+      this.alerteEchec();
+    }
+  }
+
+  inverse(){
+    let valeurExistante=false
+    for (let i in this.feedList){
+      valeurExistante=true
+    }
+    if(valeurExistante==true){
+      for(let i in this.feedList){
+        if(this.checkboxFields[i]==null){
+            this.checkboxFields[i]=false;
+        }
+      }
       for (let i in this.checkboxFields){
         if(this.checkboxFields[i]==true){
           this.checkboxFields[i]=false;
+        }else{
+          this.checkboxFields[i]=true;
         }
       }
     }
+  }
+
+  delete(){
+    let valeurExistante=false
+    for (let i in this.feedList){
+      valeurExistante=true
+    }
+    if(valeurExistante==true){
+      let valeurCoche=false;
+      for(let i in this.checkboxFields){
+        if (this.checkboxFields[i]==true){
+          valeurCoche=true;
+        }
+      }
+      if(valeurCoche==true){
+        //mettre l'alerte pour confirmer la suppression ici
+        this.apiProvider.delete(this.checkboxFields,this.feedList).subscribe(data => {
+          this.feedList = data.feed;
+        });
+        for (let i in this.checkboxFields){
+          if(this.checkboxFields[i]==true){
+            this.checkboxFields[i]=false;
+          }
+        }
+      }
+    }
+  }
+
+  alerteEchec() {
+    let alert = this.alertCtrl.create({
+      title: "pas d'ingrédient sélectioné",
+      buttons: ['ok']
+    });
+    alert.present();
   }
 }
