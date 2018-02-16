@@ -7,25 +7,17 @@
 </ion-header>
   
 <ion-content padding>
-    <ion-list-header style="text-align: center">Select your ingredients</ion-list-header>
-    <ion-list>
-
-          <ion-item>
-              <ion-label>Tomato</ion-label>
-              <ion-checkbox [(ngModel)]="recipe.tomato" name="tomato"></ion-checkbox>
-          </ion-item>
-
-          <ion-item>
-              <ion-label>Lemon</ion-label>
-              <ion-checkbox [(ngModel)]="recipe.lemon" name="lemon"></ion-checkbox>
-          </ion-item>
-
-          <ion-item>
-              <ion-label>Chicken</ion-label>
-              <ion-checkbox [(ngModel)]="recipe.chicken" name="chicken"></ion-checkbox>
-          </ion-item>
-          <button ion-button (click)="goRecipe(); presentConfirm()" block>Find recipes</button>
-          
+    <ion-list >
+        <button ion-button (click)="inverse()" round small>inverse checkbox</button>
+      <ion-item *ngFor="let feed of feedList; let i=index;">
+        <ion-checkbox [(ngModel)]="checkboxFields[i]" ></ion-checkbox>
+        <ion-label>{{feed.name}}</ion-label>
+      </ion-item>
+      <button ion-button (click)="goRecipe()" block>find recipe</button>
+      <button ion-button (click)="delete()" block>delete</button>
+        
+      
       </ion-list>
+        
 </ion-content>
   

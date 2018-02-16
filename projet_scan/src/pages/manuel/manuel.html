@@ -5,11 +5,32 @@
       </ion-title>
     </ion-navbar>
   </ion-header>
-  
-  <ion-content padding>
-    <ion-list-header style="text-align: center">ENTER YOUR PRODUCTS MANUALLY</ion-list-header>
-    <button ion-button (click)="manuel()" block>Enter barcode manually</button>
-  </ion-content>
-
-
-  
+ 
+    <ion-content padding>
+        <ion-list>
+    
+                <ion-item>
+                    <ion-toggle [(ngModel)]="recipe.tomato" name="tomato" checked="false"></ion-toggle>
+                    <ion-label>tomato</ion-label>
+                    <ion-icon name='body' item-start></ion-icon>
+                  </ion-item>
+              
+                  <ion-item>
+                    <ion-toggle [(ngModel)]="recipe.lemon" name="lemon" checked="false"></ion-toggle>
+                    <ion-label>lemon</ion-label>
+                    <ion-icon name='body' item-start></ion-icon>
+                  </ion-item>
+    
+                    <ion-item>
+                        <ion-toggle [(ngModel)]="recipe.chicken" name="chicken"></ion-toggle>
+                        <ion-label>chicken</ion-label>
+                        <ion-icon name='body' item-start></ion-icon>
+                      </ion-item>
+              <button ion-button (click)="AddArticle()" block>Add Todo</button>
+          
+            
+          
+          </ion-list>
+            
+    </ion-content>
+      

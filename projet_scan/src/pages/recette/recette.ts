@@ -8,14 +8,19 @@ import { DataProvider } from '../../providers/api-scan/api-scan';
 })
 export class RecettePage {
 
+  recipes:any
   constructor(public navCtrl: NavController, public apiProvider : DataProvider) {
-    this.rechercheRecette();
   }
 
-  rechercheRecette(){
-    this.apiProvider.getRecipes().subscribe(data => {
-      console.log(data);
-      
-    })
+  goRecipe(){
+    this.apiProvider.recette.subscribe(data => {
+      if(data.count>0){
+        this.recipes=data;
+      }
+    });
+  }
+
+  openDetails(feed) {
+    this.navCtrl.push('DetailArticlePage', { feed: feed });
   }
 }

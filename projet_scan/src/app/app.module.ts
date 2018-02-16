@@ -14,6 +14,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { DataProvider } from '../providers/api-scan/api-scan';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { DetailArticlePage } from '../pages/detail-article/detail-article';
 
 
 @NgModule({

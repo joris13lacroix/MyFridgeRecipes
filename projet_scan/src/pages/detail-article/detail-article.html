@@ -1,0 +1,21 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Acceuil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-item >
+        <h1>{{feed.recipe.label}}</h1>
+        <img [src]=feed.recipe.image />
+        <h2>ingredients :</h2>
+        <ion-item *ngFor="let ingredient of feed.recipe.ingredients; let i=index;">
+          <p>{{ingredient.text}}</p>
+        </ion-item>
+        <a href={{feed.recipe.url}}>lien vers le site</a>
+      </ion-item>
+
+</ion-content>
+

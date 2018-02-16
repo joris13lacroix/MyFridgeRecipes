@@ -10,57 +10,95 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
 export class HomePage {
   recipe = {};
   maRecherche:String;
+  feedList: any;
+  checkboxFields={};// ATTENTION continuer de remplir le tableau si on veux rajoutter des produits dans le html
 
-
-  constructor(public navCtrl: NavController, public apiProvider : DataProvider,private alertCtrl: AlertController) {
-
+  constructor(public navCtrl: NavController, public apiProvider : DataProvider, private alertCtrl: AlertController) {
+    apiProvider.getFeedList().subscribe(data => {
+      this.feedList = data.feed;
+    });
   }
 
  
   
   goRecipe() {
-    this.maRecherche="";
-    for(let i in this.recipe){
-      if (this.recipe[i]==true){
-        if(this.maRecherche!=""){
-          this.maRecherche+=', '+i;
-        }
-        else{
-          this.maRecherche+=i;
-        }
-      
-      this.apiProvider.recipes = this.maRecherche;
+    let valeurCoche=false;
+    for(let i in this.checkboxFields){
+      if (this.checkboxFields[i]==true){
+        valeurCoche=true;
       }
     }
-    console.log(this.maRecherche);
-  }
-  
-  goToRecette() {
-    this.navCtrl.parent.select(3);
+    if(valeurCoche==true){
+      this.maRecherche="";
+      for(let i in this.feedList){
+        if (this.checkboxFields[i]==true){
+        this.maRecherche+=this.feedList[i].name+',';
+        }
+      }
+      this.apiProvider.recipes = this.maRecherche;
+      this.apiProvider.getRecipes().subscribe(data => {
+        if(data.count>0){
+          this.recipe=data;
+        }
+      });
+      this.navCtrl.parent.select(3);
+    }else{
+      this.alerteEchec();
+    }
   }
 
-  presentConfirm() {
-    let alert = this.alertCtrl.create({
-      title: 'Confirm ingredients :',
-      message: this.apiProvider.recipes,
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            //console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Validate',
-          handler: () => {
-            this.goToRecette();
+  inverse(){
+    let valeurExistante=false
+    for (let i in this.feedList){
+      valeurExistante=true
+    }
+    if(valeurExistante==true){
+      for(let i in this.feedList){
+        if(this.checkboxFields[i]==null){
+            this.checkboxFields[i]=false;
+        }
+      }
+      for (let i in this.checkboxFields){
+        if(this.checkboxFields[i]==true){
+          this.checkboxFields[i]=false;
+        }else{
+          this.checkboxFields[i]=true;
+        }
+      }
+    }
+  }
+
+  delete(){
+    let valeurExistante=false
+    for (let i in this.feedList){
+      valeurExistante=true
+    }
+    if(valeurExistante==true){
+      let valeurCoche=false;
+      for(let i in this.checkboxFields){
+        if (this.checkboxFields[i]==true){
+          valeurCoche=true;
+        }
+      }
+      if(valeurCoche==true){
+        //mettre l'alerte pour confirmer la suppression ici
+        this.apiProvider.delete(this.checkboxFields,this.feedList).subscribe(data => {
+          this.feedList = data.feed;
+        });
+        for (let i in this.checkboxFields){
+          if(this.checkboxFields[i]==true){
+            this.checkboxFields[i]=false;
           }
         }
-      ]
+      }
+    }
+  }
+
+  alerteEchec() {
+    let alert = this.alertCtrl.create({
+      title: "pas d'ingrédient sélectioné",
+      buttons: ['ok']
     });
     alert.present();
   }
-
-  
 }
