@@ -7,14 +7,13 @@
 </ion-header>
   
 <ion-content padding>
+    <ion-list-header style="text-align: center">Select your ingredients</ion-list-header>
     <ion-list>
 
-        <form (ngSubmit)="goRecipe()">
-
-            <ion-item>
-                <ion-label>Tomato</ion-label>
-                <ion-checkbox [(ngModel)]="recipe.tomato" name="tomato"></ion-checkbox>
-            </ion-item>
+          <ion-item>
+              <ion-label>Tomato</ion-label>
+              <ion-checkbox [(ngModel)]="recipe.tomato" name="tomato"></ion-checkbox>
+          </ion-item>
 
           <ion-item>
               <ion-label>Lemon</ion-label>
@@ -25,10 +24,8 @@
               <ion-label>Chicken</ion-label>
               <ion-checkbox [(ngModel)]="recipe.chicken" name="chicken"></ion-checkbox>
           </ion-item>
-          <button ion-button type="submit" block>Add Todo</button>
-        </form>
-        
-      
+          <button ion-button (click)="goRecipe(); presentConfirm()" block>Find recipes</button>
+          
       </ion-list>
 </ion-content>
   

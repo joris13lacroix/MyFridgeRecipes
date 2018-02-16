@@ -8,15 +8,10 @@
   
   <ion-content padding>
     
-    <button ion-button (click)="scan()">Scan ... </button>
-    <div *ngIf="scanData">
-        <p>Scanned Format : </p>
-    </div>
-
-    <button ion-button (click)="lanceRequette()">lance la requette</button>
-    <button ion-button (click)="rechercheRecette()">recherche les recettes</button>
-    <p>l'aliment scanné : {{produit}}</p>
-    <p>l'aliment trouvé : {{wordEn}}</p>
+    <button ion-button (click)="scan()" block>Scan barcode</button>
+   
+    <p>l'aliment scanné : {{apiProvider.produit2}}</p>
+    <p>l'aliment trouvé : {{apiProvider.wordEn}}</p>
     
 </ion-content>
   
