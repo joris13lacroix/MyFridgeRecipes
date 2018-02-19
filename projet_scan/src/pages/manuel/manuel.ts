@@ -109,6 +109,7 @@ export class ManuelPage {
                     buttons: ['Close']
                   });
                   alert.present();
+                  this.navCtrl.parent.select(0);
                 }
                 else{
                   let alert = this.alertCtrl.create({

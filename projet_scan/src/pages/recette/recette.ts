@@ -12,6 +12,8 @@ export class RecettePage {
   from=0;
   to=10;
   recipes:any
+  pageActuel=1;
+  pageMax=0;
   constructor(public navCtrl: NavController, public apiProvider : DataProvider, private alertCtrl: AlertController) {
   }
 
@@ -21,7 +23,20 @@ export class RecettePage {
     this.apiProvider.recette.subscribe(data => {
       if(data.count>0){
         this.recipes=data;
+        this.pageMax=Math.trunc(data.count/10);
+        if(data.count%10>0){
+          this.pageMax+=1;
+        }
+        console.log("page max :",this.pageMax);
+        this.pageActuel=1;
+        console.log(this.pageActuel);
         console.log(data);
+      }else{
+        let alert = this.alertCtrl.create({
+          title: "aucune recette trouvée", 
+          buttons: ['ok']
+        });
+        alert.present();
       }
     });
   }
@@ -40,6 +55,7 @@ export class RecettePage {
           this.recipes=data;
         }
       });
+      this.pageActuel+=1;
     }else{
       this.alerteSuivant();
     }
@@ -62,6 +78,7 @@ export class RecettePage {
           this.recipes=data;
         }
       });
+      this.pageActuel-=1;
     }else{
       this.alertePrecedente();
     }

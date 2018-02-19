@@ -9,14 +9,19 @@
       <ion-item *ngIf="recipes==null">
           <p>aucune recette recherché</p>
         </ion-item>
-      <div *ngIf="recipes!=null" >
+  <div *ngIf="recipes!=null" >
     <div id="entete"></div>
+    <h2>result : {{recipes.count}}</h2>
+    
     <ion-item *ngFor="let theRecipe of recipes.hits" (click)="openDetails(theRecipe)">
       <h1>{{theRecipe.recipe.label}}</h1>
       <img [src]=theRecipe.recipe.image />
     </ion-item>
-    <a href="#entete" ><button ion-button (click)="pagePrecedente()" >page précédente</button></a>
-    <a href="#entete" ><button ion-button (click)="pageSuivante()" >page suivante</button></a>
+    <div style="text-align:center">
+      <h3><a href="#entete" ><ion-icon name="arrow-dropleft" (click)="pageSuivante()" style="font-size:xx-large; margin-top:5%" item-start></ion-icon></a>
+      page {{pageActuel}} on {{pageMax}}
+      <a href="#entete" ><ion-icon name="arrow-dropright" (click)="pageSuivante()" style="font-size:xx-large; margin-top:5%" item-start></ion-icon></a></h3>
+    </div>
   </div>
   </ion-content>
   
