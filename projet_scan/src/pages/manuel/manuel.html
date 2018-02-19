@@ -4,12 +4,13 @@
         Products
       </ion-title>
     </ion-navbar>
+    <ion-toolbar>
+        <button ion-button (click)="manuel()" block>Write barre code</button>
+    </ion-toolbar>
   </ion-header>
  
-  
-    <ion-content padding>
-        <ion-list>
-          <button ion-button (click)="manuel()" block>write barre code</button>
+      <ion-content padding>
+        <ion-list>          
           <ion-item>
             <ion-toggle [(ngModel)]="recipe.tomato" name="tomato" checked="false"></ion-toggle>
             <ion-label>tomato</ion-label>
@@ -74,13 +75,20 @@
             <ion-toggle [(ngModel)]="recipe.oysters" name="oysters"></ion-toggle>
             <ion-label>oysters</ion-label>
             <ion-icon name='body' item-start></ion-icon>
-          </ion-item>
+          </ion-item> 
+        </ion-list>
 
-          <button ion-button (click)="AddArticle()" block>Add Todo</button>
+      </ion-content>
+
+      <ion-footer>
+          <ion-toolbar>
+              <button ion-button (click)="AddArticle()" block>Add to fridge</button>
+          </ion-toolbar>
+      </ion-footer>
+        
           
+        
+        
             
-          
-          </ion-list>
-            
-    </ion-content>
+    
       
