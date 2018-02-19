@@ -6,13 +6,19 @@
     </ion-navbar>
   </ion-header>
   
-  <ion-content padding>
-    <button ion-button (click)="goRecipe()" block>afficher la recette</button>
-    <div *ngIf="recipes!=null" >
+  <ion-content padding >
+      <ion-item *ngIf="recipes==null">
+      <button ion-button (click)="goRecipe()" block>afficher la recette</button>
+          <p>aucune recette recherché</p>
+        </ion-item>
+      <div *ngIf="recipes!=null" >
+    <div id="entete"></div>
     <ion-item *ngFor="let theRecipe of recipes.hits" (click)="openDetails(theRecipe)">
       <h1>{{theRecipe.recipe.label}}</h1>
       <img [src]=theRecipe.recipe.image />
     </ion-item>
+    <a href="#entete" ><button ion-button (click)="pagePrecedente()" >page précédente</button></a>
+    <a href="#entete" ><button ion-button (click)="pageSuivante()" >page suivante</button></a>
   </div>
   </ion-content>
   
