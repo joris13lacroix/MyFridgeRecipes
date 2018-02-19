@@ -7,7 +7,6 @@
   </ion-header>
   <ion-content padding >
       <ion-item *ngIf="recipes==null">
-      <button ion-button (click)="goRecipe()" block>afficher la recette</button>
           <p>aucune recette recherché</p>
         </ion-item>
       <div *ngIf="recipes!=null" >

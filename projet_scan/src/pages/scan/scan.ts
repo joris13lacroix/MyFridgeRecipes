@@ -39,6 +39,7 @@ export class ScanPage {
                 buttons: ['Close']
               });
               alert.present();
+              this.navCtrl.parent.select(0);
             }
             else{
               let alert = this.alertCtrl.create({
@@ -46,6 +47,7 @@ export class ScanPage {
                 buttons: ['Close']
               });
               alert.present();
+              this.navCtrl.parent.select(0);
             }
           }
         );
@@ -57,7 +59,12 @@ export class ScanPage {
           buttons: ['Close']
         });
         alert.present();
+        this.navCtrl.parent.select(0);
     });  
+  }
+
+  ionViewWillEnter(){
+    this.scan();
   }
   
 

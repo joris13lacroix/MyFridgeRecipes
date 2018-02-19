@@ -75,6 +75,8 @@ export class ManuelPage {
       alert.present();
     }
   }
+
+  
   manuel(){
     let alert = this.alertCtrl.create({
       title: 'Enter manually',

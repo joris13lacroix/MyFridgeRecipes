@@ -74,4 +74,12 @@ export class RecettePage {
     });
     alert.present();
   }
+
+  ionViewWillEnter() {
+    if(this.apiProvider.recette != null){
+      this.goRecipe();
+    }
+        
+  }
+  
 }
