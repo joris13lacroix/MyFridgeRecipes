@@ -25,7 +25,8 @@ export class RecettePage {
       }
     });
   }
-
+  
+    
   openDetails(feed) {
     this.navCtrl.push('DetailArticlePage', { feed: feed });
   }

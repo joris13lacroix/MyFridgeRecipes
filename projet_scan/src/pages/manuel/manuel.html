@@ -6,27 +6,77 @@
     </ion-navbar>
   </ion-header>
  
+  
     <ion-content padding>
         <ion-list>
-    
-                <ion-item>
-                    <ion-toggle [(ngModel)]="recipe.tomato" name="tomato" checked="false"></ion-toggle>
-                    <ion-label>tomato</ion-label>
-                    <ion-icon name='body' item-start></ion-icon>
-                  </ion-item>
+          <button ion-button (click)="manuel()" block>write barre code</button>
+          <ion-item>
+            <ion-toggle [(ngModel)]="recipe.tomato" name="tomato" checked="false"></ion-toggle>
+            <ion-label>tomato</ion-label>
+            <ion-icon name='body' item-start></ion-icon>
+          </ion-item>
               
-                  <ion-item>
-                    <ion-toggle [(ngModel)]="recipe.lemon" name="lemon" checked="false"></ion-toggle>
-                    <ion-label>lemon</ion-label>
-                    <ion-icon name='body' item-start></ion-icon>
-                  </ion-item>
+          <ion-item>
+            <ion-toggle [(ngModel)]="recipe.lemon" name="lemon" checked="false"></ion-toggle>
+            <ion-label>lemon</ion-label>
+            <ion-icon name='body' item-start></ion-icon>
+          </ion-item>
     
-                    <ion-item>
-                        <ion-toggle [(ngModel)]="recipe.chicken" name="chicken"></ion-toggle>
-                        <ion-label>chicken</ion-label>
-                        <ion-icon name='body' item-start></ion-icon>
-                      </ion-item>
-              <button ion-button (click)="AddArticle()" block>Add Todo</button>
+          <ion-item>
+            <ion-toggle [(ngModel)]="recipe.chicken" name="chicken"></ion-toggle>
+            <ion-label>chicken</ion-label>
+            <ion-icon name='body' item-start></ion-icon>
+          </ion-item>
+
+          <ion-item>
+            <ion-toggle [(ngModel)]="recipe.pasta" name="pasta"></ion-toggle>
+            <ion-label>pasta</ion-label>
+            <ion-icon name='body' item-start></ion-icon>
+          </ion-item>
+
+          <ion-item>
+            <ion-toggle [(ngModel)]="recipe.onion" name="onion"></ion-toggle>
+            <ion-label>onion</ion-label>
+            <ion-icon name='body' item-start></ion-icon>
+          </ion-item>
+
+          <ion-item>
+            <ion-toggle [(ngModel)]="recipe.carrot" name="carrot"></ion-toggle>
+            <ion-label>carrot</ion-label>
+            <ion-icon name='body' item-start></ion-icon>
+          </ion-item>
+
+          <ion-item>
+            <ion-toggle [(ngModel)]="recipe.mushrooms" name="mushrooms"></ion-toggle>
+            <ion-label>mushrooms</ion-label>
+            <ion-icon name='body' item-start></ion-icon>
+          </ion-item>
+
+          <ion-item>
+            <ion-toggle [(ngModel)]="recipe.banana" name="banana"></ion-toggle>
+            <ion-label>banana</ion-label>
+            <ion-icon name='body' item-start></ion-icon>
+          </ion-item>
+
+          <ion-item>
+            <ion-toggle [(ngModel)]="recipe.corn" name="corn"></ion-toggle>
+            <ion-label>corn</ion-label>
+            <ion-icon name='body' item-start></ion-icon>
+          </ion-item>
+
+          <ion-item>
+            <ion-toggle [(ngModel)]="recipe.pineapple" name="pineapple"></ion-toggle>
+            <ion-label>pineapple</ion-label>
+            <ion-icon name='body' item-start></ion-icon>
+          </ion-item>
+
+          <ion-item>
+            <ion-toggle [(ngModel)]="recipe.oysters" name="oysters"></ion-toggle>
+            <ion-label>oysters</ion-label>
+            <ion-icon name='body' item-start></ion-icon>
+          </ion-item>
+
+          <button ion-button (click)="AddArticle()" block>Add Todo</button>
           
             
           

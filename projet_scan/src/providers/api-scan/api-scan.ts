@@ -69,7 +69,20 @@ export class DataProvider {
         }
       this.findKeyWords(this.produit2).subscribe(
         (tmp)=>{
-          return tmp;
+          if(this.wordEn!=null){
+            let j=0;
+            for (let i in this.feedData){
+              if(this.feedData[i]!=null){
+                j+=1;
+              }
+            }
+            this.feedData[j]={
+              name:this.wordEn,
+              id:j
+            }
+            console.log(this.feedData);
+        }
+        return tmp;
         }
       );
       //console.log(this.produit);
@@ -131,7 +144,7 @@ findKeyWords(scan):Observable<any>{
     ['poivron','pepper'],
     ['rutabaga','rutabaga'],
     ['abricot','apricot'],
-    ['avocat','lawyer'],
+    ['avocat','avocado'],
     ['banane','banana'],
     ['bleuet','cornflower'],
     ['cantaloup','cantaloupe'],

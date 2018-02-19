@@ -98,7 +98,25 @@ export class ManuelPage {
           handler: data => {
             console.log('code: ',data.barcode);
             this.apiProvider.codeBarre = data.barcode;
-            this.apiProvider.lanceRequette();
+            this.apiProvider.lanceRequette().subscribe(
+              (temp) =>{
+                if(this.apiProvider.wordEn){
+                  let alert = this.alertCtrl.create({
+                    title: 'Product found :)',
+                    subTitle: this.apiProvider.wordEn,
+                    buttons: ['Close']
+                  });
+                  alert.present();
+                }
+                else{
+                  let alert = this.alertCtrl.create({
+                    title: 'Product not found :(',
+                    buttons: ['Close']
+                  });
+                  alert.present();
+                }
+              }
+            );
 
           }
         }
