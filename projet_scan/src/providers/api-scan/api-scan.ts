@@ -22,7 +22,8 @@ export class DataProvider {
   finChaineProduit : String;
   debutChaineRecette : String;
   milieuChaineRecette : String;
-  finChaineRecette : String;
+  finChaineRecette1 : String;
+  finChaineRecette2 : String;
   produit: Observable<any>;
   recette: Observable<any>;
   recipes:any;
@@ -31,7 +32,8 @@ export class DataProvider {
     this.debutChaineProduit='https://world.openfoodfacts.org/api/v0/product/';
     this.finChaineProduit='.json';
     this.debutChaineRecette='https://api.edamam.com/search?q=';
-    this.finChaineRecette='&app_id=0d6a8756&app_key=ce315d29c1aaa6a7d26dc963e067aa08&from=0&to=5';
+    this.finChaineRecette1='&app_id=0d6a8756&app_key=ce315d29c1aaa6a7d26dc963e067aa08&from=';
+    this.finChaineRecette2='&to='
     this.feedData=[];
   }
 
@@ -40,8 +42,8 @@ export class DataProvider {
     return this.produit;
   }
   
-  getRecipes(): Observable<any>{
-    this.recette = this.http.get(this.debutChaineRecette + this.recipes + this.finChaineRecette);
+  getRecipes(from,to): Observable<any>{
+    this.recette = this.http.get(this.debutChaineRecette + this.recipes + this.finChaineRecette1 + from + this.finChaineRecette2 + to);
     return this.recette;
   }
  
@@ -80,20 +82,22 @@ export class DataProvider {
     let j=0;
     let name="";
     for(let i in checkboxFields){
-      if (checkboxFields[i]==true ){
-        
-        name= feedData[i].name;
-        feedList2[j]={
-          id:j,
-          name : name}
-        j+=1;
+      if (feedData[i]!=null){
+        if (checkboxFields[i]==true ){
+          
+          name= feedData[i].name;
+          feedList2[j]={
+            id:j,
+            name : name}
+          j+=1;
+        }
       }
     }
     j=0;
     for(let i in feedData){
       let aSupprimer=false;
-      for(let j in feedList2){
-        if (feedData[i].name == feedList2[j].name){
+      for(let k in feedList2){
+        if (feedData[i].name == feedList2[k].name){
           aSupprimer=true;
         }
       }

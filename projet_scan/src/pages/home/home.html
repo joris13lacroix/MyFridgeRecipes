@@ -7,17 +7,20 @@
 </ion-header>
   
 <ion-content padding>
-    <ion-list >
-        <button ion-button (click)="inverse()" round small>inverse checkbox</button>
-      <ion-item *ngFor="let feed of feedList; let i=index;">
-        <ion-checkbox [(ngModel)]="checkboxFields[i]" ></ion-checkbox>
-        <ion-label>{{feed.name}}</ion-label>
-      </ion-item>
-      <button ion-button (click)="goRecipe()" block>find recipe</button>
-      <button ion-button (click)="delete()" block>delete</button>
-        
+  <ion-item *ngIf="feedList[0]==null">
+    <p>frigo vide veuillez le remplir</p>
+  </ion-item>
+  <ion-list *ngIf="feedList[0]!=null">
+      <button ion-button (click)="inverse()" round small>inverse checkbox</button>
+    <ion-item *ngFor="let feed of feedList; let i=index;" >
+      <ion-checkbox [(ngModel)]="checkboxFields[i]" *ngIf="feed!=null"></ion-checkbox>
+      <ion-label *ngIf="feed!=null">{{feed.name}}</ion-label>
+    </ion-item>
+    <button ion-button (click)="goRecipe()" block>find recipe</button>
+    <button ion-button (click)="delete()" block>delete</button>
       
-      </ion-list>
+    
+    </ion-list>
         
 </ion-content>
   

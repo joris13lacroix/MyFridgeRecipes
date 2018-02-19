@@ -10,12 +10,15 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
 export class HomePage {
   recipe = {};
   maRecherche:String;
-  feedList: any;
+  feedList= [];
+  from=0;
+  to=10;
   checkboxFields={};// ATTENTION continuer de remplir le tableau si on veux rajoutter des produits dans le html
 
   constructor(public navCtrl: NavController, public apiProvider : DataProvider, private alertCtrl: AlertController) {
     apiProvider.getFeedList().subscribe(data => {
       this.feedList = data.feed;
+      
     });
   }
 
@@ -36,7 +39,7 @@ export class HomePage {
         }
       }
       this.apiProvider.recipes = this.maRecherche;
-      this.apiProvider.getRecipes().subscribe(data => {
+      this.apiProvider.getRecipes(this.from,this.to).subscribe(data => {
         if(data.count>0){
           this.recipe=data;
         }
