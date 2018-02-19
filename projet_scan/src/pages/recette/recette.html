@@ -7,20 +7,23 @@
   </ion-header>
   <ion-content padding >
       <ion-item *ngIf="recipes==null">
-          <p>aucune recette recherché</p>
+          <p style="text-align:center">No recipes found</p>
         </ion-item>
   <div *ngIf="recipes!=null" >
     <div id="entete"></div>
-    <h2>result : {{recipes.count}}</h2>
+
+    <ion-item>
+        <p style="text-align:center">{{recipes.count}} recipes found</p>
+      </ion-item>
     
     <ion-item *ngFor="let theRecipe of recipes.hits" (click)="openDetails(theRecipe)">
       <h1>{{theRecipe.recipe.label}}</h1>
       <img [src]=theRecipe.recipe.image />
     </ion-item>
     <div style="text-align:center">
-      <h3><a href="#entete" ><ion-icon name="arrow-dropleft" (click)="pageSuivante()" style="font-size:xx-large; margin-top:5%" item-start></ion-icon></a>
-      page {{pageActuel}} on {{pageMax}}
-      <a href="#entete" ><ion-icon name="arrow-dropright" (click)="pageSuivante()" style="font-size:xx-large; margin-top:5%" item-start></ion-icon></a></h3>
+      <h3><a href="#entete" ><ion-icon name="arrow-dropleft-circle" (click)="pagePrecedente()" style="font-size:xx-large; margin-top:5%" item-start></ion-icon></a>
+      Page {{pageActuel}} of {{pageMax}}
+      <a href="#entete" ><ion-icon name="arrow-dropright-circle" (click)="pageSuivante()" style="font-size:xx-large; margin-top:5%" item-start></ion-icon></a></h3>
     </div>
   </div>
   </ion-content>
