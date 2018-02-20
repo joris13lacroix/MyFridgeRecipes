@@ -146,7 +146,6 @@ export class ManuelPage {
         {
           text: 'Validate',
           handler: data => {
-            console.log(data.product);
             if (data.product != "") {
               let j = 0;
               for (let i in this.apiProvider.feedData) {
@@ -155,21 +154,22 @@ export class ManuelPage {
                 }
               }
               let existeDeja = false;
+              let name=this.apiProvider.removeAccents(data.product);
               for (let i in this.apiProvider.feedData) {
-                if (this.apiProvider.feedData[i].name == data.product) {
+                if (this.apiProvider.feedData[i].name == name) {
                   existeDeja = true;
                 }
               }
               if (existeDeja == false) {
                 this.apiProvider.feedData[j] = {
-                  name: data.product,
+                  name: name,
                   id: j
                 }
 
 
               } else {
                 let alertEror = this.alertCtrl.create({
-                  title: data.product + " is already in your fridge",
+                  title: name + " is already in your fridge",
                   buttons: ['ok']
                 });
                 alertEror.present();

@@ -27,13 +27,10 @@ export class RecettePage {
         if (data.count % 10 > 0) {
           this.pageMax += 1;
         }
-        console.log("page max :", this.pageMax);
         this.pageActuel = 1;
-        console.log(this.pageActuel);
-        console.log(data);
       } else {
         let alert = this.alertCtrl.create({
-          title: "aucune recette trouvée",
+          title: "no recipes found",
           buttons: ['ok']
         });
         alert.present();
@@ -63,7 +60,7 @@ export class RecettePage {
 
   alerteSuivant() {
     let alert = this.alertCtrl.create({
-      title: "vous etes à la dernière page",
+      title: "you are in the last page",
       buttons: ['ok']
     });
     alert.present();
@@ -86,7 +83,7 @@ export class RecettePage {
 
   alertePrecedente() {
     let alert = this.alertCtrl.create({
-      title: "vous etes à la première page",
+      title: "you are in the first page",
       buttons: ['ok']
     });
     alert.present();
