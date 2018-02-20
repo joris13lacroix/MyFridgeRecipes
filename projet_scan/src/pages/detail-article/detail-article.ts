@@ -25,7 +25,7 @@ export class DetailArticlePage {
     console.log('ionViewDidLoad DetailArticlePage');
   }
 
-  
-  
+
+
 
 }

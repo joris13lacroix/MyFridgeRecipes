@@ -5,31 +5,30 @@
     </ion-title>
   </ion-navbar>
   <ion-toolbar style="text-align:center">
-      <button ion-button  style="min-width: 46%" (click)="inverse()">Inverse checkbox </button>
-      <button ion-button color="danger" style="min-width: 46%" (click)="delete()">Delete</button>
+    <button ion-button style="min-width: 46%" (click)="inverse()">Inverse checkbox </button>
+    <button ion-button color="danger" style="min-width: 46%" (click)="delete()">Delete</button>
   </ion-toolbar>
 </ion-header>
-  
+
 <ion-content padding>
   <ion-item *ngIf="feedList[0]==null">
-    <p>frigo vide veuillez le remplir</p>
+    <p>empty fridge please fill it</p>
   </ion-item>
   <ion-list *ngIf="feedList[0]!=null">
-      
-    <ion-item *ngFor="let feed of feedList; let i=index;" >
+
+    <ion-item *ngFor="let feed of feedList; let i=index;">
       <ion-checkbox [(ngModel)]="checkboxFields[i]" *ngIf="feed!=null"></ion-checkbox>
       <ion-label *ngIf="feed!=null">{{feed.name}}</ion-label>
     </ion-item>
-    
-      
-    
-    </ion-list>
-        
+
+
+
+  </ion-list>
+
 </ion-content>
 <ion-footer>
-    <ion-toolbar>
-      <button ion-button (click)="goRecipe()" block>Find recipes</button>
-      
-    </ion-toolbar>
+  <ion-toolbar>
+    <button ion-button (click)="goRecipe()" block>Find recipes</button>
+
+  </ion-toolbar>
 </ion-footer>
-  
