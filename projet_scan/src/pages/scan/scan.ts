@@ -40,8 +40,12 @@ export class ScanPage {
             });
             alert.present();
             this.navCtrl.parent.select(0);
-          }
-          else {
+          } else {
+            let alert = this.alertCtrl.create({
+              title: 'Product not found :(',
+              buttons: ['Close']
+            });
+            alert.present();
             this.navCtrl.parent.select(0);
           }
         }
