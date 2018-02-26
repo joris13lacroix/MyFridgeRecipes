@@ -23,6 +23,7 @@ export class RecettePage {
     this.apiProvider.recette.subscribe(data => {
       if (data.count > 0) {
         this.recipes = data;
+        console.log(data);
         this.pageMax = Math.trunc(data.count / 10);
         if (data.count % 10 > 0) {
           this.pageMax += 1;
