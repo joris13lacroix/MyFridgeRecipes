@@ -161,10 +161,11 @@ export class ManuelPage {
                 }
               }
               if (existeDeja == false) {
-                this.apiProvider.feedData[j] = {
+                let newFeed = {
                   name: name,
                   id: j
                 }
+                this.apiProvider.addFeedToList(newFeed);
 
 
               } else {
