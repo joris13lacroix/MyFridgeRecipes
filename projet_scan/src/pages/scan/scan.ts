@@ -17,7 +17,7 @@ export class ScanPage {
   ingredient: any;
 
   constructor(public navCtrl: NavController, private barcodeScanner: BarcodeScanner, private alertCtrl: AlertController, public apiProvider: DataProvider) {
-    this.codeBarre = '306832009961';
+    //this.codeBarre = '306832009961';
   }
 
   scan() {
