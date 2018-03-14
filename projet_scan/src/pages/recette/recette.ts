@@ -31,8 +31,8 @@ export class RecettePage {
         this.pageActuel = 1;
       } else {
         let alert = this.alertCtrl.create({
-          title: "no recipes found",
-          buttons: ['ok']
+          title: "No recipes found",
+          buttons: ['Ok']
         });
         alert.present();
       }
@@ -61,8 +61,8 @@ export class RecettePage {
 
   alerteSuivant() {
     let alert = this.alertCtrl.create({
-      title: "you are in the last page",
-      buttons: ['ok']
+      title: "You already are on the last page",
+      buttons: ['Ok']
     });
     alert.present();
   }
@@ -84,8 +84,8 @@ export class RecettePage {
 
   alertePrecedente() {
     let alert = this.alertCtrl.create({
-      title: "you are in the first page",
-      buttons: ['ok']
+      title: "You already are on the first page",
+      buttons: ['Ok']
     });
     alert.present();
   }

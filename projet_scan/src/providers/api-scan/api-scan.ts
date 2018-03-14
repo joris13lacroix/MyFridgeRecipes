@@ -92,8 +92,8 @@ export class DataProvider {
 
               } else {
                 let alert = this.alertCtrl.create({
-                  title: this.wordEn + " est deja existant dans votre frigo",
-                  buttons: ['ok']
+                  title: this.wordEn + " is aldready in your fridge",
+                  buttons: ['Ok']
                 });
                 alert.present();
               }

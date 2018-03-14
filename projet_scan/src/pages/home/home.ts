@@ -85,16 +85,16 @@ export class HomePage {
       }
       if (valeurCoche == true) {
         let alert = this.alertCtrl.create({
-          title: "are you sur to delete ?",
+          title: "Are you sure you want to remove ?",
           buttons: [
             {
-              text: 'no',
+              text: 'No',
               role: 'cancel',
               handler: data => {
               }
             },
             {
-              text: 'yes',
+              text: 'Yes',
               handler: data => {
                 this.apiProvider.delete(this.checkboxFields, this.feedList).subscribe(data => {
                   this.feedList = data.feed;
@@ -115,8 +115,8 @@ export class HomePage {
 
   alerteEchec() {
     let alert = this.alertCtrl.create({
-      title: "pas d'ingrédient sélectioné",
-      buttons: ['ok']
+      title: "No ingredient selected",
+      buttons: ['Ok']
     });
     alert.present();
   }

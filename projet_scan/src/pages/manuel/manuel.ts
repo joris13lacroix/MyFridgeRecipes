@@ -59,7 +59,7 @@ export class ManuelPage {
   alerteSucces(ingredients) {
     if (ingredients != "") {
       let alert = this.alertCtrl.create({
-        title: ingredients + ' add succesfully',
+        title: ingredients + ' added successfully',
         buttons: ['ok']
       });
       alert.present();
@@ -69,7 +69,7 @@ export class ManuelPage {
   alerteEchec(ingredients) {
     if (ingredients != "") {
       let alert = this.alertCtrl.create({
-        title: ingredients + "  already in your fridge",
+        title: ingredients + " is/are already in your fridge",
         buttons: ['ok']
       });
       alert.present();
