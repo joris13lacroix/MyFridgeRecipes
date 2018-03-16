@@ -17,11 +17,7 @@ export class ScanPage {
   ingredient: any;
 
   constructor(public navCtrl: NavController, private barcodeScanner: BarcodeScanner, private alertCtrl: AlertController, public apiProvider: DataProvider) {
-<<<<<<< HEAD
-    //this.codeBarre = '306832009961';
-=======
     this.codeBarre = null;
->>>>>>> master
   }
 
   scan() {
@@ -33,6 +29,7 @@ export class ScanPage {
     this.barcodeScanner.scan(this.options).then((barcodeData) => {
 
       console.log(barcodeData);
+      if(barcodeData.text!=""){
       this.apiProvider.codeBarre = barcodeData.text;
 
       this.apiProvider.lanceRequette().subscribe(
@@ -55,6 +52,14 @@ export class ScanPage {
           }
         }
       );
+    }else{
+      let alert = this.alertCtrl.create({
+        title: 'Product not found :(',
+        buttons: ['Close']
+      });
+      alert.present();
+      this.navCtrl.parent.select(0);
+    }
 
     }, (err) => {
       console.log("Error occured : " + err);
