@@ -5,77 +5,111 @@
     </ion-title>
   </ion-navbar>
   <ion-toolbar style="text-align:center">
-    <button ion-button style="min-width: 46%" (click)="manuel()">Write barcode</button>
-    <button ion-button style="min-width: 46%" (click)="writeProduct()">Write product</button>
+    <button ion-button color="boutons2" outline style="min-width: 46%" (click)="manuel()">
+      <p style="font-weight: lighter">Enter barcode</p>
+    </button>
+    <button ion-button color="boutons2" outline style="min-width: 46%"  (click)="writeProduct()">
+      <p style="font-weight: lighter">Enter product</p>
+    </button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <ion-list>
     <ion-item>
-      <ion-toggle [(ngModel)]="recipe.tomato" name="tomato" checked="false"></ion-toggle>
-      <ion-label>tomato</ion-label>
-      <ion-icon name='body' item-start></ion-icon>
+        <ion-avatar item-start>
+          <img src="assets/imgs/tomato.png">
+        </ion-avatar>
+      <ion-toggle color="checkbox" [(ngModel)]="recipe.tomato" name="tomato" checked="false"></ion-toggle>
+      <ion-label style="font-weight: lighter">Tomato</ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-toggle [(ngModel)]="recipe.lemon" name="lemon" checked="false"></ion-toggle>
-      <ion-label>lemon</ion-label>
-      <ion-icon name='body' item-start></ion-icon>
+        <ion-avatar item-start>
+          <img src="assets/imgs/lemon.png">
+        </ion-avatar>
+      <ion-toggle  color="checkbox" [(ngModel)]="recipe.lemon" name="lemon" checked="false"></ion-toggle>
+      <ion-label style="font-weight: lighter">Lemon</ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-toggle [(ngModel)]="recipe.chicken" name="chicken"></ion-toggle>
-      <ion-label>chicken</ion-label>
-      <ion-icon name='body' item-start></ion-icon>
+        <ion-avatar item-start>
+          <img src="assets/imgs/chicken.png">
+        </ion-avatar>
+      <ion-toggle  color="checkbox" [(ngModel)]="recipe.chicken" name="chicken"></ion-toggle>
+      <ion-label style="font-weight: lighter">Chicken</ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-toggle [(ngModel)]="recipe.pasta" name="pasta"></ion-toggle>
-      <ion-label>pasta</ion-label>
-      <ion-icon name='body' item-start></ion-icon>
+        <ion-avatar item-start>
+          <img src="assets/imgs/ravioli.png">
+        </ion-avatar>
+      <ion-toggle  color="checkbox" [(ngModel)]="recipe.pasta" name="pasta"></ion-toggle>
+      <ion-label style="font-weight: lighter">Pasta</ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-toggle [(ngModel)]="recipe.onion" name="onion"></ion-toggle>
-      <ion-label>onion</ion-label>
-      <ion-icon name='body' item-start></ion-icon>
+        <ion-avatar item-start>
+          <img src="assets/imgs/onion.png">
+        </ion-avatar>
+      <ion-toggle  color="checkbox" [(ngModel)]="recipe.onion" name="onion"></ion-toggle>
+      <ion-label style="font-weight: lighter">Onion</ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-toggle [(ngModel)]="recipe.carrot" name="carrot"></ion-toggle>
-      <ion-label>carrot</ion-label>
-      <ion-icon name='body' item-start></ion-icon>
+        <ion-avatar item-start>
+          <img src="assets/imgs/carrot.png">
+        </ion-avatar>
+      <ion-toggle  color="checkbox" [(ngModel)]="recipe.carrot" name="carrot"></ion-toggle>
+      <ion-label style="font-weight: lighter">Carrot</ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-toggle [(ngModel)]="recipe.mushrooms" name="mushrooms"></ion-toggle>
-      <ion-label>mushrooms</ion-label>
-      <ion-icon name='body' item-start></ion-icon>
+        <ion-avatar item-start>
+          <img src="assets/imgs/mushroom.png">
+        </ion-avatar>
+      <ion-toggle  color="checkbox" [(ngModel)]="recipe.mushrooms" name="mushrooms"></ion-toggle>
+      <ion-label style="font-weight: lighter">Mushroom</ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-toggle [(ngModel)]="recipe.banana" name="banana"></ion-toggle>
-      <ion-label>banana</ion-label>
-      <ion-icon name='body' item-start></ion-icon>
+        <ion-avatar item-start>
+          <img src="assets/imgs/banana.png">
+        </ion-avatar>
+      <ion-toggle  color="checkbox" [(ngModel)]="recipe.banana" name="banana"></ion-toggle>
+      <ion-label style="font-weight: lighter">Banana</ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-toggle [(ngModel)]="recipe.corn" name="corn"></ion-toggle>
-      <ion-label>corn</ion-label>
-      <ion-icon name='body' item-start></ion-icon>
+        <ion-avatar item-start>
+          <img src="assets/imgs/corn.png">
+        </ion-avatar>
+      <ion-toggle  color="checkbox" [(ngModel)]="recipe.corn" name="corn"></ion-toggle>
+      <ion-label style="font-weight: lighter">Corn</ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-toggle [(ngModel)]="recipe.pineapple" name="pineapple"></ion-toggle>
-      <ion-label>pineapple</ion-label>
-      <ion-icon name='body' item-start></ion-icon>
+        <ion-avatar item-start>
+          <img src="assets/imgs/pineapple.png">
+        </ion-avatar>
+      <ion-toggle  color="checkbox" [(ngModel)]="recipe.pineapple" name="pineapple"></ion-toggle>
+      <ion-label style="font-weight: lighter">Pineapple</ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-toggle [(ngModel)]="recipe.oysters" name="oysters"></ion-toggle>
-      <ion-label>oysters</ion-label>
-      <ion-icon name='body' item-start></ion-icon>
+        <ion-avatar item-start>
+          <img src="assets/imgs/oyster.png">
+        </ion-avatar>
+      <ion-toggle  color="checkbox" [(ngModel)]="recipe.oysters" name="oysters"></ion-toggle>
+      <ion-label style="font-weight: lighter">Oyster</ion-label>
+    </ion-item>
+
+    <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/imgs/egg.png">
+        </ion-avatar>
+      <ion-toggle  color="checkbox" [(ngModel)]="recipe.egg" name="egg"></ion-toggle>
+      <ion-label style="font-weight: lighter">Egg</ion-label>
     </ion-item>
   </ion-list>
 
@@ -83,6 +117,6 @@
 
 <ion-footer>
   <ion-toolbar>
-    <button ion-button (click)="AddArticle()" block>Add to fridge</button>
+    <button ion-button style="font-weight: lighter" color="boutons" (click)="AddArticle()" block>ADD TO FRIDGE</button>
   </ion-toolbar>
 </ion-footer>

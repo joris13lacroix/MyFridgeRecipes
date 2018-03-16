@@ -8,6 +8,7 @@ import { RecettePage } from '../recette/recette';
 
 
 @Component({
+  selector: 'page-tabs',
   templateUrl: 'tabs.html'
 })
 export class TabsPage {

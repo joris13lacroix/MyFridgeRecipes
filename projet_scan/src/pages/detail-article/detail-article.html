@@ -1,19 +1,20 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Acceuil</ion-title>
+    <ion-title>Recipe details</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
 
   <ion-item>
-    <h1>{{feed.recipe.label}}</h1>
-    <img [src]=feed.recipe.image />
-    <h2>ingredients :</h2>
+    <h1 style="padding-bottom: 2%; text-align: center; white-space: normal; letter-spacing: 1px; font-weight: lighter">{{feed.recipe.label}}</h1>
+    <img style="display: block; margin-left: auto; margin-right: auto" [src]=feed.recipe.image />
+    <h2 style="text-align: center; white-space: normal; font-weight: lighter; padding-top: 5%">Calorie count : {{feed.recipe.calories}}</h2>
+    <h2 style="text-align: center; padding-top: 10%; letter-spacing: 5px; font-weight: lighter">INGREDIENTS</h2>
     <ion-item *ngFor="let ingredient of feed.recipe.ingredients; let i=index;">
-      <p>{{ingredient.text}}</p>
+      <p style="white-space: normal; font-weight: lighter">{{ingredient.text}}</p>
     </ion-item>
-    <a href={{feed.recipe.url}}>link web</a>
+    <a href={{feed.recipe.url}}><p style="font-weight: bold; text-align: center; padding-top: 10%; color: #488aff">Link of the recipe</p></a>
   </ion-item>
 
 </ion-content>

@@ -92,8 +92,8 @@ export class DataProvider {
 
               } else {
                 let alert = this.alertCtrl.create({
-                  title: this.wordEn + " est deja existant dans votre frigo",
-                  buttons: ['ok']
+                  title: this.wordEn + " is aldready in your fridge",
+                  buttons: ['Ok']
                 });
                 alert.present();
               }
@@ -135,7 +135,7 @@ export class DataProvider {
       ['betterave', 'beet'],
       ['bette', 'bette'],
       ['brocoli', 'broccoli'],
-      ['tte', 'carrot'],
+      ['carotte', 'carrot'],
       ['celeri', 'celery'],
       ['champignons', 'mushrooms'],
       ['chlorelle', 'chlorella'],
@@ -312,7 +312,7 @@ export class DataProvider {
         console.log('keywords found:', this.wordEn);
       }
       else {
-        console.log('no keywords found ');
+        console.log('no keywords found');
       }
     }
     return of(this.wordEn);

@@ -17,10 +17,15 @@ export class ScanPage {
   ingredient: any;
 
   constructor(public navCtrl: NavController, private barcodeScanner: BarcodeScanner, private alertCtrl: AlertController, public apiProvider: DataProvider) {
+<<<<<<< HEAD
     //this.codeBarre = '306832009961';
+=======
+    this.codeBarre = null;
+>>>>>>> master
   }
 
   scan() {
+    
     this.options = {
       prompt: "Scan your barcode "
     }

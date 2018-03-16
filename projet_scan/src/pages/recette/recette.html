@@ -1,35 +1,36 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Recipes
+      My Recipes
     </ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <ion-item *ngIf="recipes==null">
-    <p style="text-align:center">No recipes found</p>
-  </ion-item>
+  <ion-list *ngIf="recipes==null">
+    <ion-list-header style="text-align: center">Go select your ingredients</ion-list-header>    
+    <img style="width: 80%; display: block; padding-top: 25%; margin-left: auto; margin-right: auto" src="assets/imgs/fridge.png">
+  </ion-list>
   <div *ngIf="recipes!=null">
     <div id="entete"></div>
 
-    <ion-item>
-      <p style="text-align:center">{{recipes.count}} recipes found</p>
-    </ion-item>
+    <ion-list>
+      <ion-list-header style="text-align: center">{{recipes.count}} recipes found</ion-list-header>
+    </ion-list>
 
     <ion-item *ngFor="let theRecipe of recipes.hits" (click)="openDetails(theRecipe)">
-      <h1>{{theRecipe.recipe.label}}</h1>
+      <h2 style="white-space: normal; letter-spacing: 1px; font-weight: lighter">{{theRecipe.recipe.label}}</h2>  
       <img [src]=theRecipe.recipe.image />
     </ion-item>
     <div style="text-align:center">
-      <h3>
+      <h5>
         <a href="#entete">
-          <ion-icon name="arrow-dropleft-circle" (click)="pagePrecedente()" style="font-size:xx-large; margin-top:5%" item-start></ion-icon>
+          <ion-icon color="checkbox" name="arrow-dropleft-circle" (click)="pagePrecedente()" style="margin-top:9%" item-start></ion-icon>
         </a>
-        Page {{pageActuel}} of {{pageMax}}
+        <b> Page {{pageActuel}} of {{pageMax}} </b>
         <a href="#entete">
-          <ion-icon name="arrow-dropright-circle" (click)="pageSuivante()" style="font-size:xx-large; margin-top:5%" item-start></ion-icon>
+          <ion-icon color="checkbox" name="arrow-dropright-circle" (click)="pageSuivante()" style="margin-top:9%" item-start></ion-icon>
         </a>
-      </h3>
+      </h5>
     </div>
   </div>
 </ion-content>
